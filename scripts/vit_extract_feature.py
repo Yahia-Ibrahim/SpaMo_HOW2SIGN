@@ -10,7 +10,7 @@ from PIL import Image
 from transformers import AutoImageProcessor, CLIPVisionModel
 
 import sys
-sys.path.append('../')
+sys.path.append('./')
 
 from utils.s2wrapper import forward as multiscale_forward
 from utils.helpers import read_video, get_img_list
