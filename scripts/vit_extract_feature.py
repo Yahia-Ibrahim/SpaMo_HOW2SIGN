@@ -130,7 +130,7 @@ def get_iterator(args, mode):
 
 
 def main():
-    mode = ["dev", "test", "train"]
+    mode = ["test"]
     for m in mode:
         parser = get_parser()
         args = parser.parse_args()
