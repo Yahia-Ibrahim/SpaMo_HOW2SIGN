@@ -57,6 +57,11 @@ class ViTFeatureReader(object):
     @torch.no_grad()
     def get_feats(self, video):
         inputs = self.image_processor(list(video), return_tensors="pt").to(self.device).pixel_values
+        
+        # FIX: Remove extra dimension if it exists
+        if inputs.dim() == 5:
+            inputs = inputs.squeeze(0)
+        
         if self.s2_mode == "s2wrapping":
             outputs = multiscale_forward(self.forward_features, inputs, scales=self.scales, num_prefix_token=1)
         else:
