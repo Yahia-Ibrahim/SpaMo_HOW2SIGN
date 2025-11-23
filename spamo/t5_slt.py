@@ -347,9 +347,9 @@ class FlanT5SLT(AbstractSLT):
                 langs.append(sample['lang'])
                 
                 _ex_lang_trans = [
-                    f"{sample['en_text']}={sample['text']}",
-                    f"{sample['fr_text']}={sample['text']}",
-                    f"{sample['es_text']}={sample['text']}"
+                    f"{sample.get('en_text', sample['text'])}={sample['text']}",
+                    f"{sample.get('fr_text', sample['text'])}={sample['text']}",
+                    f"{sample.get('es_text', sample['text'])}={sample['text']}"
                 ]
                 _ex_lang_trans = _ex_lang_trans[:self.num_in_context]
                 ex_lang_translations.append(' '.join(_ex_lang_trans))
