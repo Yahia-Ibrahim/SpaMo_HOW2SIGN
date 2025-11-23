@@ -15,6 +15,8 @@ from pytorch_lightning.trainer import Trainer
 from utils.helpers import instantiate_from_config
 from spamo.callbacks import SetupCallback
 
+import os
+os.environ["WANDB_MODE"] = "offline"
 
 def str2bool(v: Any) -> bool:
     """Convert string representation to boolean.
