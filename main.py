@@ -315,7 +315,12 @@ def main():
         )
     
     # Create trainer
-    trainer = Trainer(**vars(trainer_opt))
+    trainer = Trainer(
+        devices=1,               # use 1 GPU
+        accelerator='gpu',       # explicitly use GPU
+        strategy=None,           # avoid DDP / multi-device
+        **vars(trainer_opt)      # keep the rest of your trainer options
+    )
     
     # Run training or testing
     if opt.train:
